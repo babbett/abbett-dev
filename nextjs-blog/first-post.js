@@ -1,16 +1,16 @@
 import Head from "next/head";
-import Link from "next/link"
+import Link from "next/link";
 import Script from "next/script";
-import Layout from "../../components/layout.js";
+import Layout from "./components/layout.js";
 
 export default function FirstPost() {
-    return (
-        <>
-            <Layout>
-                <Head>
-                    <title>First Post</title>
-                </Head>
-                {/*
+  return (
+    <>
+      <Layout>
+        <Head>
+          <title>First Post</title>
+        </Head>
+        {/*
                 <Script 
                     src="https://connect.facebook.net/en_US/sdk.js"
                     strategy="lazyOnload"
@@ -19,11 +19,11 @@ export default function FirstPost() {
                     }
                 />
                 */}
-                <h1>fUCK You!!!</h1>
-                <h2>
-                    <Link href='/'>Back to Home</Link>
-                </h2>
-            </Layout>
-        </>
-    );
+        <h1>fUCK You!!!</h1>
+        <h2>
+          <Link href="/">Back to Home</Link>
+        </h2>
+      </Layout>
+    </>
+  );
 }
