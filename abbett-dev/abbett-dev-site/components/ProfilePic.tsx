@@ -4,8 +4,8 @@ function ProfilePic() {
     return (
         <div className="basis-1/4 place-self-center sm:mt-10">
             <picture>
-                <source srcSet="/../abbett-dev-site/public/me.png" type="image/webp" />
-                <img src="/../abbett-dev-site/public/me.png" alt="Profile" />
+                <source srcSet="/me.png" type="image/png" />
+                <img src="/me.png" alt="Profile" />
             </picture>
         </div>
     );
