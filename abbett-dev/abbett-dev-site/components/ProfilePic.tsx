@@ -1,5 +1,5 @@
 import Image from "next/image";
-import myImage from "../public/me.png";
+import myImage from "./../public/me.png";
 
 function ProfilePic() {
     return (
