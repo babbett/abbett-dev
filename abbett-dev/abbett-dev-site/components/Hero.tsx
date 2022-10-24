@@ -17,7 +17,7 @@ function Hero() {
             <div className="p-10 shadow-lg bg-gray-100 rounded-3xl flex flex-row">
                 <Nameplate/>
                 <div className="basis-1/4">
-                    <Image src="/../public/IMG_1790 copy.png" layout="intrinsic" height="100%" width="100%" alt="Picture of me"></Image>
+                    <Image src="/../public/me.png" layout="intrinsic" height="100%" width="100%" alt="Picture of me"></Image>
                 </div>
             </div>
         </>
