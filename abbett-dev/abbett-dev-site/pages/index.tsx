@@ -13,7 +13,7 @@ function Home() {
       <Head>
         <title>Ben Abbett | Developer</title>
         <meta name="description" content="Ben Abbett's Developer Portfolio" />
-        <link rel="icon" href="/favicon_code.ico" />
+        <link rel="icon" href="/../public/code.ico" />
       </Head>
 
       <Navbar/>

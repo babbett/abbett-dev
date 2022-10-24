@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Nameplate from "./Nameplate"
+import ProfilePic from "./ProfilePic";
 
 function Hero() {
     // const subtitleArr = [".NET Developer", "Penis Man", "Lil Boy Ben", "The Benster"]
@@ -14,11 +14,9 @@ function Hero() {
                 <h1 className="text-left text-7xl">Ben Abbett</h1>
                 <p>.NET Developer</p>
             </div> */}
-            <div className="p-10 shadow-lg bg-gray-100 rounded-3xl flex flex-row">
+            <div className="p-10 m-auto shadow-lg bg-blue-200 rounded-3xl flex lg:md:flex-row sm:flex-col-reverse w-10/12">
                 <Nameplate/>
-                <div className="basis-1/4">
-                    <Image src="/../public/me.png" layout="intrinsic" height="100%" width="100%" alt="Picture of me"></Image>
-                </div>
+                <ProfilePic/>
             </div>
         </>
     );
