@@ -1,5 +1,5 @@
 import Image from "next/image";
-import myImage from "/vercel/path0/abbett-dev/abbett-dev-site/public/me.png";
+import myImage from "*.png";
 
 function ProfilePic() {
     return (
