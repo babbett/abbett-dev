@@ -1,7 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
@@ -13,14 +11,12 @@ function Home() {
       <Head>
         <title>Ben Abbett | Developer</title>
         <meta name="description" content="Ben Abbett's Developer Portfolio" />
-        <link rel="icon" href="/../public/code.ico" />
+        <link rel="icon" type="image/x-icon" href="/code.ico" />
       </Head>
 
-      <Navbar/>
       <main>
         <Hero/>
       </main>
-      <Footer/>
       {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
