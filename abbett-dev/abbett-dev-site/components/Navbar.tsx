@@ -13,8 +13,8 @@ type MobileProps = {
 
 function NavLink({ to, children }: NavProps) {
     return (
-        <Link href={to} className="mx-4 border-4 border-blue-500">
-            {children}
+        <Link href={to}>
+            <a className="mx-2">{children}</a>
         </Link>
     );
 }
@@ -26,11 +26,11 @@ function MobileNav({ open, setOpen }: MobileProps) {
                 <Link className="text-xl font-semibold" href="/">Logo</Link>
             </div>
             <div className="flex flex-col ml-4">
-                <Link className="text-xl font-medium my-4" href="/about">
-                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)}>About</a>
+                <Link href="/about">
+                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4">About</a>
                 </Link>
-                <Link className="text-xl font-normal my-4 ml-1" href="/contact">
-                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)}>Contact</a>
+                <Link href="/contact">
+                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-normal my-4 ml-1">Contact</a>
                 </Link>
             </div>  
         </div>
@@ -43,7 +43,9 @@ function Navbar() {
         <nav className="flex filter drop-shadow-md bg-white px-4 py-4 h-20 items-center">
             <MobileNav open={open} setOpen={setOpen}/>
             <div className="w-3/12 flex items-center">
-                <Link className="text-2xl font-semibold" href="/">Logo</Link>
+                <Link href="/">
+                    <a className="text-2xl font-semibold">LOGO</a>
+                </Link>
             </div>
             <div className="w-9/12 flex justify-end items-center">
 
