@@ -16,7 +16,7 @@ function Layout({ children }: LayoutProps) {
             </Head>
 
             <Navbar/>
-            <main className="dark:bg-gray-600 min:h-screen">{children}</main>
+            <main className="dark:bg-gray-600 min:h-screen py-5">{children}</main>
             <Footer/>
         </>
     );

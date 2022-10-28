@@ -7,10 +7,10 @@ import Description from '../components/Description'
  */
 function Home() {
   return (
-    <>
-      <Hero/>
-      <Description/>
-    </>
+      <div>
+        <Hero/>
+        <Description/>
+      </div>
   );
     
 }
