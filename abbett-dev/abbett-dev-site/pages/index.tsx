@@ -1,12 +1,18 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-
 import Hero from '../components/Hero'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Description from '../components/Description'
 
+/** The 'portfolio' part of the app. Contact me, download resume, list of projects, etc.. 
+ * 
+ * @returns The home page.
+ */
 function Home() {
-  return <Hero/>;
+  return (
+    <>
+      <Hero/>
+      <Description/>
+    </>
+  );
+    
 }
 
 export default Home;

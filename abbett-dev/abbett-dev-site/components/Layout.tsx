@@ -6,7 +6,7 @@ type LayoutProps = {
     children: React.ReactNode,
 };
 
-export default function Layout({ children }: LayoutProps) {
+function Layout({ children }: LayoutProps) {
     return (
         <>
             <Head>
@@ -16,11 +16,13 @@ export default function Layout({ children }: LayoutProps) {
             </Head>
 
             <Navbar/>
-            <main>{children}</main>
+            <main className="dark:bg-gray-600">{children}</main>
             <Footer/>
         </>
     );
 }
+
+export default Layout;
 // type LayoutProps = {
 //     children: React.ReactNode,
 //   };
