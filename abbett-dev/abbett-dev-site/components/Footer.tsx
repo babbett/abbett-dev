@@ -1,5 +1,9 @@
-export default function Footer() {
+function Footer() {
     return (
-        <div>Footer</div>
+        <div className="bg-blue-300">
+            <h4>©2022 Ben Abbett</h4>
+        </div>
     );
 }
+
+export default Footer;
