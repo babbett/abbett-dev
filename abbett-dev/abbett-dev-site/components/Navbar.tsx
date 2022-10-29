@@ -26,11 +26,11 @@ function MobileNav({ open, setOpen }: MobileProps) {
                 <Link className="text-xl font-semibold" href="/">Logo</Link>
             </div>
             <div className="flex flex-col ml-4">
-                <Link href="/about">
-                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4">About</a>
-                </Link>
                 <Link href="/contact">
                     <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-normal my-4 ml-1">Contact</a>
+                </Link>
+                <Link href="/about">
+                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4">About</a>
                 </Link>
             </div>  
         </div>
@@ -59,11 +59,11 @@ function Navbar() {
                 </div>
 
                 <div className="hidden md:flex">
-                    <NavLink to="/contact">
-                        CONTACT
-                    </NavLink>
                     <NavLink to="/about">
                         ABOUT
+                    </NavLink>
+                    <NavLink to="/contact">
+                        CONTACT
                     </NavLink>
                 </div>
             </div>
