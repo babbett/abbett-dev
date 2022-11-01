@@ -1,0 +1,9 @@
+[
+    {
+        "Id": 1,
+        "Name":"Portfolio",
+        "Tools": ["Next.js", "Typescript", "TailwindCSS"],
+        "Description": "A personal portfolio website to display current and past projects",
+        "Status": "In Progress" 
+    }
+]
