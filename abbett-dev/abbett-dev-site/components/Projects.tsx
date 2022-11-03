@@ -10,6 +10,5 @@ function Projects({projArray}: {projArray: ProjectData[]}) {
             ))}
         </div>
     );
-}
- 
+} 
 export default Projects;
