@@ -40,11 +40,11 @@ function MobileNav({ open, setOpen }: MobileProps) {
 function Navbar() {
     const [open, setOpen] = useState(false)
     return (
-        <nav className="flex filter drop-shadow-md bg-white dark:bg-gray-700 px-4 py-4 h-20 items-center">
+        <nav className="flex filter drop-shadow-md bg-white  dark:bg-gray-700 px-4 py-4 h-16 items-center">
             <MobileNav open={open} setOpen={setOpen}/>
             <div className="w-3/12 flex items-center">
                 <Link href="/">
-                    <a className="text-2xl font-semibold dark:text-white">LOGO</a>
+                    <a className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-400">{'{ BA }'}</a>
                 </Link>
             </div>
             <div className="w-9/12 flex justify-end items-center">
@@ -64,6 +64,9 @@ function Navbar() {
                     </NavLink>
                     <NavLink to="/contact">
                         CONTACT
+                    </NavLink>
+                    <NavLink to="/colortest">
+                        .ct
                     </NavLink>
                 </div>
             </div>

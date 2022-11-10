@@ -1,7 +1,8 @@
 import ProjectData from "../lib/Project";
 
-function Project({ children }: { children: ProjectData }) {
+function Project({ children, key }: { children: ProjectData, key:number }) {
     console.log(children)
+    console.log(key)
     return (
         <div>
             <div>{children.Name}</div>

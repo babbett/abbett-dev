@@ -1,7 +1,7 @@
 function Footer() {
     return (
-        <div className="bg-blue-300">
-            <h4>©2022 Ben Abbett</h4>
+        <div className="bg-blue-300 dark:bg-gray-700">
+            <h4 className="text-lg text-center dark:text-white">©2022 Ben Abbett | Waluigi Mode</h4>
         </div>
     );
 }

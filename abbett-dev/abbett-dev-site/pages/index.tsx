@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
     // Convert to ProjectObj
     const projects: ProjectData[] = JSON.parse(fileContents);
 
+
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
     return { props: { projects } }
@@ -22,12 +23,12 @@ export const getStaticProps: GetStaticProps = async () => {
  * 
  * @returns The home page.
  */
-function Home({projects}: InferGetStaticPropsType<typeof getStaticProps > ) {
-  return (
+ function Home({ projects }: InferGetStaticPropsType<typeof getStaticProps > ) {
+    return (
       <div>
         <Hero/>
         <Description/>
-        <Projects projArray={[projects]}></Projects>
+        <Projects projArray={projects}></Projects>
       </div>
   );
     
