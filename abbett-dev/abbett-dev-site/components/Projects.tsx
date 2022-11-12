@@ -1,6 +1,6 @@
 import type ProjectData from '../lib/Project';
 
-function Project({ children, key }: { children: ProjectData, key:number }) {
+function Project({ children }: { children: ProjectData }, key: number) {
     return (
         <div className='bg-white dark:bg-gray-400 my-2'>
             <div className='dark:text-white text-'>{children.Name}</div>
