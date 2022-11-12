@@ -23,7 +23,9 @@ function MobileNav({ open, setOpen }: MobileProps) {
     return (
         <div className={`absolute top-0 left-0 h-screen w-screen bg-white dark:bg-gray-600 transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md `}>
             <div className="flex items-center justify-center filter drop-shadow-md bg-white dark:bg-gray-700 h-20"> {/*logo container*/}
-                <Link className="text-xl font-semibold" href="/">LOGO</Link>
+                <Link href="/">
+                        <Logo/>
+                </Link>
             </div>
             <div className="flex flex-col ml-4">
                 <Link href="/contact">
@@ -40,11 +42,11 @@ function MobileNav({ open, setOpen }: MobileProps) {
 function Navbar() {
     const [open, setOpen] = useState(false)
     return (
-        <nav className="flex filter drop-shadow-md bg-white  dark:bg-gray-700 px-4 py-4 h-16 items-center">
+        <nav className="flex filter drop-shadow-md dark:bg-gray-700 px-4 py-4 h-16 items-center">
             <MobileNav open={open} setOpen={setOpen}/>
             <div className="w-3/12 flex items-center">
                 <Link href="/">
-                    <a className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-400">{'{ BA }'}</a>
+                    <Logo/>
                 </Link>
             </div>
             <div className="w-9/12 flex justify-end items-center">
@@ -74,4 +76,14 @@ function Navbar() {
     )
 }
 
+/* Helper functions */
+function Logo() {
+    return <a className="text-4xl 
+                         font-extrabold 
+                         text-transparent 
+                         whitespace-nowrap
+                         bg-clip-text bg-gradient-to-r from-orange-400 to-blue-400">{'{ BA }'}</a>
+
+}
+/********************/
 export default Navbar;
