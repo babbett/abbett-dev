@@ -9,6 +9,7 @@ import type ProjectData from '../lib/Project';
 // Import next.js css class
 import styles from '../styles/Home.module.css' 
 import { ReactNode } from 'react';
+import React, { useState, useEffect } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     const jsonDirectory = path.join(process.cwd(), 'lib');
@@ -22,11 +23,13 @@ export const getStaticProps: GetStaticProps = async () => {
     return { props: { projects } }
 }
 
+//? NOTES: option+W for wrap in html element
+
 /** The 'portfolio' part of the app. Contact me, download resume, list of projects, etc.. 
  * 
  * @returns The home page.
  */
- function Home({ projects }: InferGetStaticPropsType<typeof getStaticProps > ) {
+const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps > ) => {
   //   return (
   //     <div>
   //       <Hero/>
@@ -42,22 +45,42 @@ export const getStaticProps: GetStaticProps = async () => {
   )
 }
 
-function WaveHand() {
-  return (
-    <span className='animate-waving-hand inline-block mx-1'>👋</span>
-  );
-}
+const IntroPane = (): React.ReactElement => {
+  useEffect(() => {
+    // Add an effect that looks like typing the current message
+    // < characters are treated as backspaces
+    const message: string = "/* I'm Ben Abe<bo<et*<t */";
+    var index = 0;
+    
+    const intervalId = setInterval(function(){
+      if (index < message.length) {
+        if (message[index] !== '<') {
+          document.getElementById('intro')!.innerHTML += message[index];
+        }
+        else {
+          var currMessage = document.getElementById('intro')!.innerHTML;
+          document.getElementById('intro')!.innerHTML = currMessage.substring(0, currMessage.length - 1);
+        }
+        index++;
+      }
+  
+      if (index == message.length) {
+        // document.getElementById('intro').className += ' text-green-400';
+        document.getElementById('intro')!.className += ' text-green-500';
+        clearInterval(intervalId);
+      }
+    }, Math.random()*100+60);
+  });
 
-function IntroPane() {
   return (
     <>
       <div className='md:basis-1/2 md:h-fit max-md:my-20 dark:text-white md:sticky md:top-1/2'>
-        {/* <div className='sticky top-1/2 w-full h-1 bg-red-500 -z-10'></div> */}
+        {/* for testing midline: <div className='sticky top-1/2 w-full h-1 bg-red-500 -z-10'></div> */}
         <section>
           <div className='md:relative'>
             <div className='md:absolute md:w-full md:-top-20'>
               <h1 className='text-6xl text-center mb-2'>Hello World<WaveHand></WaveHand></h1>
-              <h2 className='text-4xl text-center mb-2'>I{"'"}m Ben Abbett</h2>
+              <h2 className='text-4xl text-center mb-2' id='intro'></h2>
               <h3 className='text-3xl text-center mb-2'> </h3>
               {/* <h2 className='text-3xl text-center mb-2 text-gray-500 dark:text-white'>Software Developer</h2> */}
               <div className='flex flex-row items-center'>
@@ -74,39 +97,39 @@ function IntroPane() {
   );
 }
 
-function MainPane() {
+const MainPane = (): React.ReactElement => {
   return (
     <div className='md:basis-1/2 dark:text-white'>
       <div className='w-9/12 mx-auto'>
         <section className='mt-2'>
-          <h3 className='text-3xl my-4'>About Me</h3>
-          <p>
-          I graduated from Gordon College in 2021 with a double major in Computer Science and Mathematics. 
-          Since then, I{"'"}ve spent my time building software for nonprofits at <Link href="https://www.brickriver.com">Brick River Technologies</Link>,
+          <h3 className='text-3xl my-4'><b>About Me</b></h3>
+          <p className='ml-4'>
+            I graduated from Gordon College in 2021 with a double major in Computer Science and Mathematics. 
+            Since then, I{"'"}ve spent my time building software for nonprofits at <Link href="https://www.brickriver.com">Brick River Technologies</Link>,
           </p>
         </section>
         <section className='mt-2'>
-          <h3 className='text-3xl my-4'>Skills</h3>
-          <div className='w-12/12'>
+          <h3 className='text-3xl my-4'><b>Skills</b></h3>
+          <div className='ml-4'>
             {SkillList()}
           </div>
         </section>
         <section className='mt-2'>
-          <h3 className='text-3xl my-4'>Projects</h3>
-          <p>
+          <h3 className='text-3xl my-4'><b>Projects</b></h3>
+          <p className='ml-4'>
             Hello
           </p>
         </section>
         <section className='mt-2'>
-          <h3 className='text-3xl my-4'>Contact</h3>
-          <div>
+          <h3 className='text-3xl my-4'><b>Contact</b></h3>
+          <div className='ml-4'>
               <span className='font-bold'>Email:</span> <a href='mailto:bwabbett@gmail.com'>bwabbett@gmail.com</a>
           </div>
         </section>
         {/* Long content test */}
         <section className='mt-2'>
           <h3 className='text-3xl my-4'>Long Content Test</h3>
-          <p>
+          <p className='ml-4'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim cursus dui, vitae vulputate lacus facilisis a. In sagittis nunc quis odio tincidunt sollicitudin. Sed vel libero a massa elementum blandit sit amet quis odio. Pellentesque et justo eget nisl mattis gravida. Nam faucibus lobortis dapibus. Quisque ut felis sapien. Donec tempus sem ac facilisis placerat.
             Etiam faucibus arcu nulla, vel tristique turpis vehicula et. Nam et augue eget erat lobortis malesuada ut sed ante. Proin eleifend, ex id aliquam vestibulum, ipsum eros consectetur risus, sed mattis ligula tellus ullamcorper tortor. Fusce dictum tempor sem, a lacinia mi semper in. Vestibulum ac ultricies leo, quis rutrum urna. Suspendisse tempor nisi nec convallis varius. Donec lacinia interdum molestie.
             Fusce eu interdum sapien. Vivamus aliquam et nisl et scelerisque. Duis vel erat a nisi varius congue. Aliquam pellentesque euismod vestibulum. Donec vestibulum placerat sapien eget mattis. Cras ultrices massa vel suscipit hendrerit. In ipsum erat, tristique ac laoreet sit amet, dignissim sit amet lorem. Integer vestibulum dictum lacus sed venenatis. Aliquam erat volutpat. Sed ex dolor, pulvinar id porta vitae, pharetra quis enim.
@@ -119,9 +142,15 @@ function MainPane() {
   );
 }
 
-function SkillList() {
+const WaveHand = (): React.ReactElement => {
+  return (
+    <span className='animate-waving-hand inline-block mx-1'>👋</span>
+  );
+}
+
+const SkillList = (): React.ReactElement => {
   // Create a list of skills
-  const skills = [
+  const skills: string[] = [
     'React',
     'Next.js',
     'ASP.NET',
@@ -135,7 +164,7 @@ function SkillList() {
   ];
 
   // Create a list of skill elements
-  const skillElements: ReactNode[] = skills.map((skill: string) => {
+  const skillElements: React.ReactElement[] = skills.map((skill: string) => {
     return Skill(skill);
   });
 
@@ -149,15 +178,15 @@ function SkillList() {
   );
 }
 
-function Skill(skill: string): React.ReactNode {
+const Skill = (skill: string): React.ReactElement => {
   return (
-    <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 p-0.5 content-center rounded-md inline'>
-      <div className='bg-white dark:bg-gray-700 px-1 rounded hover:bg-clip-text'>{skill}</div>
+    <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 pr-2 drop-shadow p-0.5 content-center rounded-md inline'>
+      <div className='bg-white dark:bg-gray-700 px-1 rounded hover:bg-clip-text text-gray-700 hover:text-white'>{skill}</div>
     </div>
   );
 }
 
-function FontAwesome(name: string, dark?: boolean) {
+function FontAwesome(name: string, dark?: boolean): React.ReactNode {
   return <i className={`fa-${dark ? "regular" : "solid"} fa-${name}`}></i>
 }
 

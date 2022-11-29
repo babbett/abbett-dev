@@ -79,7 +79,7 @@ function Navbar() {
 /* Helper functions */
 function Logo() {
     return (
-        <Link href='/'>
+        <Link id='lnkLogo' href='/'>
             <a className="text-4xl 
                         font-extrabold 
                         text-transparent 
