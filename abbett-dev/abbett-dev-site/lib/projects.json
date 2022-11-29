@@ -1,0 +1,16 @@
+[
+    {
+        "Id": 1,
+        "Name":"Portfolio",
+        "Tools": ["Next.js", "Typescript", "TailwindCSS"],
+        "Description": "A personal portfolio website to display current and past projects",
+        "Status": "In Progress" 
+    },
+    {
+        "Id": 2,
+        "Name":"Power Method",
+        "Tools": ["C++", "CUDA", "OpenMP"],
+        "Description": "A program for calculating the dominant eigenvalue of a matrix. Various levels of parallelization were added blah blah",
+        "Status": "2021" 
+    }
+]
