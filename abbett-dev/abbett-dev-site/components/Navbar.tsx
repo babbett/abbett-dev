@@ -41,7 +41,7 @@ function MobileNav({ open, setOpen }: MobileProps) {
 function Navbar() {
     const [open, setOpen] = useState(false)
     return (
-        <nav className="flex filter dark:bg-gray-700 px-4 py-4 h-16 items-center">
+        <nav className="flex filter dark:bg-gray-900 px-4 py-4 h-16 items-center">
             <MobileNav open={open} setOpen={setOpen}/>
             <div className="w-3/12 flex items-center">
                 <Link href="/"><Logo/></Link>

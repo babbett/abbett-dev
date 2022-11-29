@@ -49,7 +49,8 @@ const IntroPane = (): React.ReactElement => {
   useEffect(() => {
     // Add an effect that looks like typing the current message
     // < characters are treated as backspaces
-    const message: string = "/* I'm Ben Abe<bo<et*<t */";
+    //const message: string = "/* I'm Ben Abe<bo<et*<t */";
+    const message: string = "/* I'm Ben Abet<<bot<<ett */";
     var index = 0;
     
     const intervalId = setInterval(function(){
@@ -84,10 +85,12 @@ const IntroPane = (): React.ReactElement => {
               <h3 className='text-3xl text-center mb-2'> </h3>
               {/* <h2 className='text-3xl text-center mb-2 text-gray-500 dark:text-white'>Software Developer</h2> */}
               <div className='flex flex-row items-center'>
-                <a href='/abbett-resume.pdf' target="_blank" rel="noopener noreferrer" className='p-1 mx-auto mr-1 border-2 border-black dark:border-white rounded-lg text-lg'>
+                <a href='/abbett-resume.pdf' target="_blank" rel="noopener noreferrer" className='p-1 mx-auto mr-1 border-2 border-black dark:border-white rounded-lg text-lg hover:bg-gray-300 hover:dark:bg-gray-500'>
                   <button type='button' className='dark:text-white'>Resume {FontAwesome("file")}</button>
                 </a>
-                <button type='button' className='p-1 mx-auto ml-1 border-2 border-black dark:border-white rounded-lg text-lg'>Contact {FontAwesome("envelope")}</button>
+                <a href='mailto:bwabbett@gmail' className='p-1 mx-auto ml-1 border-2 border-black dark:border-white rounded-lg text-lg hover:bg-gray-300 hover:dark:bg-gray-500'>
+                  <button type='button' className='dark:text-white'>Contact {FontAwesome("envelope")}</button>
+                </a>
               </div>
             </div>
           </div>
@@ -181,7 +184,7 @@ const SkillList = (): React.ReactElement => {
 const Skill = (skill: string): React.ReactElement => {
   return (
     <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 pr-2 drop-shadow p-0.5 content-center rounded-md inline'>
-      <div className='bg-white dark:bg-gray-700 px-1 rounded hover:bg-clip-text text-gray-700 hover:text-white'>{skill}</div>
+      <div className='bg-white dark:bg-gray-900 px-1 rounded hover:bg-clip-text text-gray-700 dark:text-gray-300 hover:text-white'>{skill}</div>
     </div>
   );
 }

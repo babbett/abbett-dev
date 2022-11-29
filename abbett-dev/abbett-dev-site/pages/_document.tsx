@@ -10,7 +10,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossorigin"/> 
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
       </Head>
-      <body className='dark:bg-gray-700 min-h-screen'>
+      <body className='dark:bg-gray-900 min-h-screen'>
         <Main />
         <NextScript />
       </body>
