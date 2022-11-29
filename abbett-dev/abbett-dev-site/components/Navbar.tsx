@@ -14,18 +14,17 @@ type MobileProps = {
 function NavLink({ to, children }: NavProps) {
     return (
         <Link href={to}>
-            <a className="mx-2 dark:text-white">{children}</a>
+            <span className="mx-2 dark:text-white">{children}</span>
         </Link>
     );
 }
 
 function MobileNav({ open, setOpen }: MobileProps) {
     return (
-        <div className={`absolute top-0 left-0 h-screen w-screen bg-white dark:bg-gray-600 transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md `}>
+        <div className={`absolute top-0 left-0 h-screen w-screen bg-white dark:bg-gray-700 transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter `}>
             <div className="flex items-center justify-center filter drop-shadow-md bg-white dark:bg-gray-700 h-20"> {/*logo container*/}
-                <Link href="/">
-                        <Logo/>
-                </Link>
+                {/* <Link href="/"><Logo/></Link> */}
+                <Logo/>
             </div>
             <div className="flex flex-col ml-4">
                 <Link href="/contact">
@@ -42,12 +41,10 @@ function MobileNav({ open, setOpen }: MobileProps) {
 function Navbar() {
     const [open, setOpen] = useState(false)
     return (
-        <nav className="flex filter drop-shadow-md dark:bg-gray-700 px-4 py-4 h-16 items-center">
+        <nav className="flex filter dark:bg-gray-700 px-4 py-4 h-16 items-center">
             <MobileNav open={open} setOpen={setOpen}/>
             <div className="w-3/12 flex items-center">
-                <Link href="/">
-                    <Logo/>
-                </Link>
+                <Link href="/"><Logo/></Link>
             </div>
             <div className="w-9/12 flex justify-end items-center">
 
@@ -70,6 +67,9 @@ function Navbar() {
                     <NavLink to="/colortest">
                         .ct
                     </NavLink>
+                    <NavLink to="/test/background">
+                        .bg
+                    </NavLink>
                 </div>
             </div>
         </nav>
@@ -78,11 +78,16 @@ function Navbar() {
 
 /* Helper functions */
 function Logo() {
-    return <a className="text-4xl 
-                         font-extrabold 
-                         text-transparent 
-                         whitespace-nowrap
-                         bg-clip-text bg-gradient-to-r from-orange-400 to-blue-400">{'{ BA }'}</a>
+    return  <a href='/' className="text-4xl 
+                          font-extrabold 
+                          text-transparent 
+                          whitespace-nowrap
+                          cursor-pointer
+                          select-none
+                          drop-shadow
+                          bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                            {'{ BA }'}
+            </a>
 
 }
 /********************/
