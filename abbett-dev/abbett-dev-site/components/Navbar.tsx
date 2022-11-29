@@ -78,16 +78,20 @@ function Navbar() {
 
 /* Helper functions */
 function Logo() {
-    return  <a href='/' className="text-4xl 
-                          font-extrabold 
-                          text-transparent 
-                          whitespace-nowrap
-                          cursor-pointer
-                          select-none
-                          drop-shadow
-                          bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                            {'{ BA }'}
+    return (
+        <Link href='/'>
+            <a className="text-4xl 
+                        font-extrabold 
+                        text-transparent 
+                        whitespace-nowrap
+                        cursor-pointer
+                        select-none
+                        drop-shadow
+                        bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                {'{ BA }'}
             </a>
+        </Link>
+    );
 
 }
 /********************/
