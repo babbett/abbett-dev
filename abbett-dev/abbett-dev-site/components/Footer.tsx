@@ -1,17 +1,15 @@
 import Link from "next/link";
 
-function Footer() {
+const Footer = () => {
     return (
-        <div className="md:py-2 py-10 relative">
-            <div className="w-full fixed origin-bottom-left">
-                <hr className="my-2 mx-auto w-11/12"/>
-                <h4 className="text-lg text-center dark:text-white">© 2022 Ben Abbett | {ExternalLinks()}</h4>
-            </div>
+        <div className="md:py-2 py-5 w-full flex-none">
+            <hr className="my-2 mx-auto w-11/12"/>
+            <h4 className="text-lg text-center dark:text-white">© 2022 Ben Abbett | {ExternalLinks()}</h4>
         </div>
     );
 }
 
-function ExternalLinks() {
+const ExternalLinks = () => {
     return (
         <>
             <a title='Github Profile' href='https://github.com/babbett'>

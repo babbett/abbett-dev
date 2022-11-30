@@ -17,10 +17,12 @@ const Layout = ({ children }: LayoutProps) => {
                 <main className="dark:bg-gray-700">{children}</main>
                 <Footer/> */}
 
-            <main className="h-screen">
-                <Navbar/>
-                {children}
-                <Footer/>
+            <main className="h-screen flex flex-col">
+                <Navbar></Navbar>
+                <div className="flex-auto p-10">
+                    {children}
+                </div>
+                <Footer></Footer>
             </main>
         </>
     );
