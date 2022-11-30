@@ -46,6 +46,9 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps > ) =>
 }
 
 const IntroPane = (): React.ReactElement => {
+  // stop the animation when redirected to another page
+  //const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     // Add an effect that looks like typing the current message
     // < characters are treated as backspaces
@@ -54,6 +57,7 @@ const IntroPane = (): React.ReactElement => {
     var index = 0;
     
     const intervalId = setInterval(function(){
+      //setIsMounted(true);
       if (index < message.length) {
         if (message[index] !== '<') {
           document.getElementById('intro')!.innerHTML += message[index];
@@ -67,7 +71,8 @@ const IntroPane = (): React.ReactElement => {
   
       if (index == message.length) {
         // document.getElementById('intro').className += ' text-green-400';
-        document.getElementById('intro')!.className += ' text-green-500';
+        document.getElementById('intro')!.className += ' text-emerald-400';
+        //setIsMounted(false);
         clearInterval(intervalId);
       }
     }, Math.random()*100+60);
@@ -114,7 +119,8 @@ const MainPane = (): React.ReactElement => {
         <section className='mt-2'>
           <h3 className='text-3xl my-4'><b>Skills</b></h3>
           <div className='ml-4'>
-            {SkillList()}
+            {/*SkillList()*/}
+            <SkillList></SkillList>
           </div>
         </section>
         <section className='mt-2'>
@@ -171,7 +177,6 @@ const SkillList = (): React.ReactElement => {
     return Skill(skill);
   });
 
-
   return (
     <div className='w-12/12'>
       <div className='flex flex-row flex-wrap'>
@@ -183,7 +188,7 @@ const SkillList = (): React.ReactElement => {
 
 const Skill = (skill: string): React.ReactElement => {
   return (
-    <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 pr-2 drop-shadow p-0.5 content-center rounded-md inline'>
+    <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 pr-2 drop-shadow p-0.5 content-center rounded-md inline' key={skill}>
       <div className='bg-white dark:bg-gray-900 px-1 rounded hover:bg-clip-text text-gray-700 dark:text-gray-300 hover:text-white'>{skill}</div>
     </div>
   );
