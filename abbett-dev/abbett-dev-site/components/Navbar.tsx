@@ -32,6 +32,9 @@ function MobileNav({ open, setOpen }: MobileProps) {
                 <Link href="/about">
                     <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4 dark:text-white">About</a>
                 </Link>
+                <Link href="/test/websockets">
+                    <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4 dark:text-white">.ws</a>
+                </Link>
             </div> 
         </div>
     )
@@ -69,6 +72,9 @@ function Navbar() {
                     </NavLink>
                     <NavLink to="/test/background">
                         .bg
+                    </NavLink>
+                    <NavLink to="/test/websockets">
+                        .ws
                     </NavLink>
                 </div>
             </div>

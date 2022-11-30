@@ -6,19 +6,18 @@ type LayoutProps = {
     children: React.ReactNode,
 };
 
-function Layout({ children }: LayoutProps) {
+const Layout = ({ children }: LayoutProps) => {
     return (
         <>
             <Head>
                 <title>Ben Abbett | Developer</title>
             </Head>
             <Script src="https://kit.fontawesome.com/0a0f2f7cff.js" crossOrigin="anonymous"></Script>
-{/* 
-            <Navbar/>
-            <main className="dark:bg-gray-700">{children}</main>
-            <Footer/> */}
+            {/* <Navbar/>
+                <main className="dark:bg-gray-700">{children}</main>
+                <Footer/> */}
 
-            <main className="">
+            <main className="h-screen">
                 <Navbar/>
                 {children}
                 <Footer/>
