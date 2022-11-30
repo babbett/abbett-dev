@@ -41,7 +41,7 @@ const Websockets = () => {
 }
 
 function saveMessage() {
-    const message: string = document.getElementById('enterHere')!.value;
+    const message: string = (document.getElementById('enterHere') as HTMLInputElement).value;
     console.log('writing message: ' + message);
     writeUserData(message);
 
