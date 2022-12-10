@@ -25,7 +25,7 @@ const MobileNav = ({ open, setOpen }: MobileProps) => {
             <div className="flex items-center justify-center filter drop-shadow-md bg-white dark:bg-gray-700 h-20">
                 {Logo()}
             </div>
-            <div className="flex flex-col ml-4">
+            {/* <div className="flex flex-col ml-4">
                 <Link href="/contact">
                     <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-normal my-4 dark:text-white">Contact</a>
                 </Link>
@@ -35,7 +35,7 @@ const MobileNav = ({ open, setOpen }: MobileProps) => {
                 <Link href="/test/websockets">
                     <a onClick={() => setTimeout(() => {setOpen(!open)}, 100)} className="text-xl font-medium my-4 dark:text-white">.ws</a>
                 </Link>
-            </div> 
+            </div>  */}
         </div>
     )
 }
@@ -51,17 +51,16 @@ const Navbar = () => {
             </div>
             <div className="w-9/12 flex justify-end items-center">
 
-                <div className="z-50 flex relative w-8 h-8 flex-col justify-between items-center md:hidden" onClick={() => {
+                {/* <div className="z-50 flex relative w-8 h-8 flex-col justify-between items-center md:hidden" onClick={() => {
                     setOpen(!open)
                 }}>
-                    {/* hamburger button */}
                     <span className={`h-1 w-full bg-black dark:bg-white rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-3.5" : ""}`} />
                     <span className={`h-1 w-full bg-black dark:bg-white rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
                     <span className={`h-1 w-full bg-black dark:bg-white rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-3.5" : ""}`} />
-                </div>
+                </div> */}
 
                 <div className="hidden md:flex">
-                    <NavLink to="/about">
+                    {/* <NavLink to="/about">
                         ABOUT
                     </NavLink>
                     <NavLink to="/contact">
@@ -75,7 +74,7 @@ const Navbar = () => {
                     </NavLink>
                     <NavLink to="/test/websockets">
                         .ws
-                    </NavLink>
+                    </NavLink> */}
                 </div>
             </div>
         </nav>

@@ -80,7 +80,7 @@ const IntroPane = (): React.ReactElement => {
 
   return (
     <>
-      <div className='md:basis-1/2 md:h-fit max-md:my-20 dark:text-white md:sticky md:top-1/2'>
+      <div className='md:basis-2/5 md:h-fit max-md:my-20 dark:text-white md:sticky md:top-1/2'>
         {/* for testing midline: <div className='sticky top-1/2 w-full h-1 bg-red-500 -z-10'></div> */}
         <section>
           <div className='md:relative'>
@@ -93,8 +93,8 @@ const IntroPane = (): React.ReactElement => {
                 <a href='/abbett-resume.pdf' target="_blank" rel="noopener noreferrer" className='p-1 mx-auto mr-1 border-2 border-black dark:border-white rounded-lg text-lg hover:bg-gray-300 hover:dark:bg-gray-500'>
                   <button type='button' className='dark:text-white'>Resume {FontAwesome("file")}</button>
                 </a>
-                <a href='mailto:bwabbett@gmail' className='p-1 mx-auto ml-1 border-2 border-black dark:border-white rounded-lg text-lg hover:bg-gray-300 hover:dark:bg-gray-500'>
-                  <button type='button' className='dark:text-white'>Contact {FontAwesome("envelope")}</button>
+                <a href='mailto:ben@abbett.dev' className='p-1 mx-auto ml-1 border-2 border-black dark:border-white rounded-lg text-lg hover:bg-gray-300 hover:dark:bg-gray-500'>
+                  <button type='button' className='dark:text-white'>Email {FontAwesome("envelope")}</button>
                 </a>
               </div>
             </div>
@@ -107,13 +107,12 @@ const IntroPane = (): React.ReactElement => {
 
 const MainPane = (): React.ReactElement => {
   return (
-    <div className='md:basis-1/2 dark:text-white'>
+    <div className='md:basis-3/5 dark:text-white'>
       <div className='w-9/12 mx-auto'>
         <section className='mt-2'>
           <h3 className='text-3xl my-4'><b>About Me</b></h3>
           <p className='ml-4'>
-            I graduated from Gordon College in 2021 with a double major in Computer Science and Mathematics. 
-            Since then, I{"'"}ve spent my time building software for nonprofits at <Link href="https://www.brickriver.com">Brick River Technologies</Link>,
+            I{"'"}m a computer science and math graduate with a passion for problem-solving. I currently work as a software developer at <Link href="https://www.brickriver.com"><span className='hover:text-blue-500 cursor-pointer'><u>Brick River Technologies</u></span></Link>, a small SaaS company which mainly provides tools for non-profits. In my free time, I enjoy taking care of my rabbit, playing chess, and rock climbing. I{"'"}m always looking for new opportunities and challenges to help me grow and develop my skills. If you have an opening you think I could be a great fit for, please don{"'"}t hesitate to reach out!
           </p>
         </section>
         <section className='mt-2'>
@@ -125,26 +124,32 @@ const MainPane = (): React.ReactElement => {
         </section>
         <section className='mt-2'>
           <h3 className='text-3xl my-4'><b>Projects</b></h3>
-          <p className='ml-4'>
-            Hello
-          </p>
+          <div className='flex flex-col'>
+            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
+              <h3 className='text-lg mb-2'>About Me</h3>
+              <p>Built and deployed a personal static web portfolio using Next.js and TailwindCSS, with a multiplayer Tic-Tac-Toe game using Firebase{"'"}s Realtime Database.</p>
+            </div>
+            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
+              <h3 className='text-lg mb-2'>AM/PM Catalyst</h3>
+              <p>Lead the development of a Java applet that streamlines the workflow for AM/PM employees and allows them to generate PDF booklets from customer medical history saved in a MySQL database.</p>
+            </div>
+            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
+              <h3 className='text-lg mb-2'>Dominant Eigenvalue Finder</h3>
+              <p>Developed a program that uses a CUDA-parallelized algorithm to calculate the dominant eigenvalue of a NxN matrix, with optimized shared memory caches and reduction algorithms</p>
+            </div>
+          </div>
         </section>
         <section className='mt-2'>
           <h3 className='text-3xl my-4'><b>Contact</b></h3>
           <div className='ml-4'>
-              <span className='font-bold'>Email:</span> <a href='mailto:bwabbett@gmail.com'>bwabbett@gmail.com</a>
+            <span className='font-bold'>Email:</span> <a className='hover:text-blue-500' href='mailto:ben@abbett.dev'><u>ben@abbett.dev</u></a>
           </div>
-        </section>
-        {/* Long content test */}
-        <section className='mt-2'>
-          <h3 className='text-3xl my-4'>Long Content Test</h3>
-          <p className='ml-4'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim cursus dui, vitae vulputate lacus facilisis a. In sagittis nunc quis odio tincidunt sollicitudin. Sed vel libero a massa elementum blandit sit amet quis odio. Pellentesque et justo eget nisl mattis gravida. Nam faucibus lobortis dapibus. Quisque ut felis sapien. Donec tempus sem ac facilisis placerat.
-            Etiam faucibus arcu nulla, vel tristique turpis vehicula et. Nam et augue eget erat lobortis malesuada ut sed ante. Proin eleifend, ex id aliquam vestibulum, ipsum eros consectetur risus, sed mattis ligula tellus ullamcorper tortor. Fusce dictum tempor sem, a lacinia mi semper in. Vestibulum ac ultricies leo, quis rutrum urna. Suspendisse tempor nisi nec convallis varius. Donec lacinia interdum molestie.
-            Fusce eu interdum sapien. Vivamus aliquam et nisl et scelerisque. Duis vel erat a nisi varius congue. Aliquam pellentesque euismod vestibulum. Donec vestibulum placerat sapien eget mattis. Cras ultrices massa vel suscipit hendrerit. In ipsum erat, tristique ac laoreet sit amet, dignissim sit amet lorem. Integer vestibulum dictum lacus sed venenatis. Aliquam erat volutpat. Sed ex dolor, pulvinar id porta vitae, pharetra quis enim.
-            Quisque egestas efficitur sem quis vestibulum. Duis lectus diam, posuere ac laoreet ac, tempor eget mauris. Donec non egestas felis, quis tempus velit. Nullam pulvinar ipsum ligula, eget placerat metus malesuada at. Vivamus ornare neque mi, id dapibus orci mollis scelerisque. Etiam a interdum lacus. Aenean aliquet interdum dolor, id elementum dui malesuada luctus. Phasellus ultricies hendrerit nisl at mattis. Vivamus et viverra ligula. Aenean in nisl turpis. Proin dignissim magna in facilisis accumsan. Nulla a auctor est.
-            Aliquam justo mi, luctus id iaculis eu, venenatis a diam. Curabitur pellentesque mi id nisl tincidunt elementum. In tincidunt, dui id rhoncus vestibulum, libero enim rhoncus mauris, quis vulputate lacus arcu faucibus elit. Proin porta mattis mattis. Vivamus vitae ante ante. Maecenas sed ullamcorper nunc, id interdum justo. Aliquam bibendum tellus eu ornare porttitor.
-          </p>
+          <div className='ml-4'>
+            <span className='font-bold'>Github:</span> <a className='hover:text-blue-500' href='https://github.com/babbett'><u>github.com/babbett</u></a>
+          </div>
+          <div className='ml-4'>
+            <span className='font-bold'>LinkedIn:</span> <a className='hover:text-blue-500' href='https://www.linkedin.com/in/abbett/'><u>linkedin.com/in/abbett</u></a>
+          </div>
         </section>
       </div>
     </div>
@@ -189,7 +194,7 @@ const SkillList = (): React.ReactElement => {
 const Skill = (skill: string): React.ReactElement => {
   return (
     <div className='bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600 flex-1 grow-0 m-1 pr-2 drop-shadow p-0.5 content-center rounded-md inline' key={skill}>
-      <div className='bg-white dark:bg-gray-900 px-1 rounded hover:bg-clip-text text-gray-700 dark:text-gray-300 hover:text-white'>{skill}</div>
+      <div className='bg-white dark:bg-gray-900 px-1 rounded text-gray-700 dark:text-gray-300'>{skill}</div>
     </div>
   );
 }
