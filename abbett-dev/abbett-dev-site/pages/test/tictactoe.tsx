@@ -89,7 +89,7 @@ const NewGame = () => {
     //btnNewGame!.classList.add("peer-in");
     let a = 10;
     let b = a * 100;
-    console.log("waluigi")
+    //console.log("waluigi")
 }
 
 const CheckWin = () => {

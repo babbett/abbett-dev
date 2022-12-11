@@ -10,7 +10,7 @@ const Websockets = () => {
         
         onValue(testRef, (snapshot) => {
             const data = snapshot.val();
-            console.log('response: ' + data);
+            //console.log('response: ' + data);
             addNewMessage(data);
             //updateStarCount(postElement, data);
         });
@@ -42,7 +42,7 @@ const Websockets = () => {
 
 function saveMessage() {
     const message: string = (document.getElementById('enterHere') as HTMLInputElement).value;
-    console.log('writing message: ' + message);
+    //console.log('writing message: ' + message);
     writeUserData(message);
 
     const messages = document.getElementById('messages');

@@ -9,7 +9,13 @@ import type ProjectData from '../lib/Project';
 // Import next.js css class
 import styles from '../styles/Home.module.css' 
 import { ReactNode } from 'react';
-import React, { useState, useEffect } from 'react'
+import TypingMessage from '../components/TypingMessage';
+
+export interface Project {
+  name: string;
+  description: string;
+  link: string | undefined;
+}
 
 export const getStaticProps: GetStaticProps = async () => {
     const jsonDirectory = path.join(process.cwd(), 'lib');
@@ -46,37 +52,6 @@ const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps > ) =>
 }
 
 const IntroPane = (): React.ReactElement => {
-  // stop the animation when redirected to another page
-  //const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    // Add an effect that looks like typing the current message
-    // < characters are treated as backspaces
-    //const message: string = "/* I'm Ben Abe<bo<et*<t */";
-    const message: string = "/* I'm Ben Abet<<bot<<ett */";
-    var index = 0;
-    
-    const intervalId = setInterval(function(){
-      //setIsMounted(true);
-      if (index < message.length) {
-        if (message[index] !== '<') {
-          document.getElementById('intro')!.innerHTML += message[index];
-        }
-        else {
-          var currMessage = document.getElementById('intro')!.innerHTML;
-          document.getElementById('intro')!.innerHTML = currMessage.substring(0, currMessage.length - 1);
-        }
-        index++;
-      }
-  
-      if (index == message.length) {
-        // document.getElementById('intro').className += ' text-green-400';
-        document.getElementById('intro')!.className += ' text-emerald-400';
-        //setIsMounted(false);
-        clearInterval(intervalId);
-      }
-    }, Math.random()*100+60);
-  });
 
   return (
     <>
@@ -86,7 +61,7 @@ const IntroPane = (): React.ReactElement => {
           <div className='md:relative'>
             <div className='md:absolute md:w-full md:-top-20'>
               <h1 className='text-6xl text-center mb-2'>Hello World<WaveHand></WaveHand></h1>
-              <h2 className='text-4xl text-center mb-2' id='intro'></h2>
+              <TypingMessage></TypingMessage>
               <h3 className='text-3xl text-center mb-2'> </h3>
               {/* <h2 className='text-3xl text-center mb-2 text-gray-500 dark:text-white'>Software Developer</h2> */}
               <div className='flex flex-row items-center'>
@@ -106,6 +81,25 @@ const IntroPane = (): React.ReactElement => {
 }
 
 const MainPane = (): React.ReactElement => {
+  // A list of projects
+  const projects: Project[] = [
+    {
+      name: 'About Me Site',
+      description: 'Built and deployed a personal static web portfolio using Next.js and TailwindCSS, with a multiplayer Tic-Tac-Toe game using Firebase\'s Realtime Database.',
+      link: 'https://abbett.dev'
+    },
+    {
+      name: 'Stupid Hockey',
+      description: 'Imagine a great four-person hockey mobile game. Now make all players use a single phone. Built in Unity with C# on a small team of 3 developers. Released on the App Store.',
+      link: 'https://apps.apple.com/us/app/stupid-hockey/id1468177210'
+    },
+    {
+      name: 'Dominant Eigenvalue Finder',
+      description: 'Developed a program that uses a CUDA-parallelized algorithm to calculate the dominant eigenvalue of a NxN matrix, with optimized shared memory caches and reduction algorithms',
+      link: ''
+    },
+  ];
+  
   return (
     <div className='md:basis-3/5 dark:text-white'>
       <div className='w-9/12 mx-auto'>
@@ -125,18 +119,7 @@ const MainPane = (): React.ReactElement => {
         <section className='mt-2'>
           <h3 className='text-3xl my-4'><b>Projects</b></h3>
           <div className='flex flex-col'>
-            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
-              <h3 className='text-lg mb-2'>About Me</h3>
-              <p>Built and deployed a personal static web portfolio using Next.js and TailwindCSS, with a multiplayer Tic-Tac-Toe game using Firebase{"'"}s Realtime Database.</p>
-            </div>
-            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
-              <h3 className='text-lg mb-2'>AM/PM Catalyst</h3>
-              <p>Lead the development of a Java applet that streamlines the workflow for AM/PM employees and allows them to generate PDF booklets from customer medical history saved in a MySQL database.</p>
-            </div>
-            <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-2 rounded-lg m-2'>
-              <h3 className='text-lg mb-2'>Dominant Eigenvalue Finder</h3>
-              <p>Developed a program that uses a CUDA-parallelized algorithm to calculate the dominant eigenvalue of a NxN matrix, with optimized shared memory caches and reduction algorithms</p>
-            </div>
+            <ProjectList projects={projects}></ProjectList>
           </div>
         </section>
         <section className='mt-2'>
@@ -199,8 +182,31 @@ const Skill = (skill: string): React.ReactElement => {
   );
 }
 
+
+
+const ProjectElement = (project: Project): React.ReactElement => {
+
+  return (
+    <div className='flex-auto bg-gray-100 dark:bg-gray-800 h-full p-4 rounded-lg m-2'>
+      <h3 className='text-2xl mb-2'><Link href={project.link ? project.link : ''}>{project.name}</Link></h3>
+      <p>{project.description}</p>
+    </div>
+  );
+}
+
+const ProjectList = (props: { projects: Project[] }): React.ReactElement => {
+  return (
+    <div className='flex flex-col'>
+      {props.projects.map((project: Project) => {
+        return ProjectElement(project);
+      })}
+    </div>
+  )
+}
+
 function FontAwesome(name: string, dark?: boolean): React.ReactNode {
   return <i className={`fa-${dark ? "regular" : "solid"} fa-${name}`}></i>
 }
+
 
 export default Home;
