@@ -81,7 +81,6 @@ const Navbar = () => {
     )
 }
 
-/* Helper functions */
 const Logo = (): React.ReactElement => {
     return (
         <Link id='lnkLogo' href='/'>
@@ -99,5 +98,5 @@ const Logo = (): React.ReactElement => {
     );
 
 }
-/********************/
+
 export default Navbar;

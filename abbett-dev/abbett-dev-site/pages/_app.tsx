@@ -5,12 +5,10 @@ import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Layout>
-        <Component {...pageProps} />
-        <Analytics />
-      </Layout>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+      <Analytics />
+    </Layout>
   );
 }
 

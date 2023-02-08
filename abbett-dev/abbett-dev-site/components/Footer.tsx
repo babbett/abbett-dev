@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const Footer = () => {
     return (
         <div className="md:py-2 py-5 w-full flex-none">

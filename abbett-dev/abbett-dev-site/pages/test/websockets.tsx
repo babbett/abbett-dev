@@ -47,14 +47,6 @@ function saveMessage() {
 
     const messages = document.getElementById('messages');
 
-    // var a = getUserData();
-    // console.log(a);
-    // .then((data) => {
-    //     console.log(data)
-    //     //messages!.innerHTML += data;
-    // }, (error) => {
-    //     console.log("error!!!");
-    // });
 }
 
 function addNewMessage(message: string) {

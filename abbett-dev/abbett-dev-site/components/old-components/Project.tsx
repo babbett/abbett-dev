@@ -1,4 +1,4 @@
-import ProjectData from "../lib/Project";
+import ProjectData from "../../lib/Project";
 
 function Project({ children, key }: { children: ProjectData, key:number }) {
     console.log(children)
