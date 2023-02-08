@@ -9,6 +9,7 @@ TailwindCSS is used for styling. Hosted on Vercel.
 
 In Progress:
 - Online multi-user chat and simple game server (using Firebase)
+- Make more responsive for mobile
 
 Future:
 - Rewrite in Next.js 13
