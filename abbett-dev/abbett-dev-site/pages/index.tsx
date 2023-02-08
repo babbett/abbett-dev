@@ -1,8 +1,4 @@
-import * as fs from "fs/promises";
-import path from "path";
 import Link from "next/link";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import type ProjectData from "../lib/Project";
 
 // Import next.js css class
 import TypingMessage from "../components/TypingMessage";
@@ -13,26 +9,11 @@ export interface Project {
   link: string | undefined;
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const jsonDirectory = path.join(process.cwd(), "lib");
-  //Read the json data file data.json
-  const fileContents = await fs.readFile(
-    jsonDirectory + "/projects.json",
-    "utf8"
-  );
-  // Convert to ProjectObj
-  const projects: ProjectData[] = JSON.parse(fileContents);
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return { props: { projects } };
-};
-
 /** The 'portfolio' part of the app. Contact me, download resume, list of projects, etc..
  *
  * @returns The home page.
  */
-const Home = ({ projects }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = () => {
   return (
     <div className="mx-auto flex md:flex-row flex-col">
       <IntroPane />
