@@ -1,4 +1,4 @@
-import type ProjectData from '../lib/Project';
+import type ProjectData from '../../lib/Project';
 
 function Project({ children }: { children: ProjectData }, key: number) {
     return (
