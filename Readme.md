@@ -1,7 +1,7 @@
 # abbett.dev
-## Portfolio website 
-### Next.js - TailwindCSS - Vercel
 
+Portfolio website built with Next.js and TypeScript. 
+TailwindCSS is used for styling. Hosted on Vercel.
 - `/nextjs-blog` was created by following the tutorial found in the [Next.js documentation](https://nextjs.org/learn/basics/create-nextjs-app/setupnextjs-blog)
 - `/abbett-dev` contains the source code for [The Site](abbett.dev)
 
