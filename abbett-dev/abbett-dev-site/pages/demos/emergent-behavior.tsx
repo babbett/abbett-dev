@@ -15,7 +15,7 @@ type Particle = {
 // https://www.youtube.com/watch?v=PUsWxzfuUmA&list=PLYTjd0ZEnNx_Rfq4cERntyBe9BY3J4zHE&index=10
 // what if this was used for some sort of pathfinding? one of the stable 
 // structures is a sort of path, could connect food sources? 
-var EmergentBehavior = function EmergentBehavior() {   
+var EmergentBehavior = () => {   
     useEffect (() => {
         console.log("Hello");
         let canvas: any = document.getElementById("life");
@@ -118,9 +118,7 @@ var EmergentBehavior = function EmergentBehavior() {
     }, []);
 
     return (
-        <div>
-            <canvas id="life" height="500" width="500"></canvas>
-        </div>
+        <canvas id="life" height="500" width="500" className='mx-auto'></canvas>
     );
 }
 

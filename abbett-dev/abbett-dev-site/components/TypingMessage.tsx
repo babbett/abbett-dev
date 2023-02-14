@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 
 const TypingMessage = () => {
 	// A simple typing effect. '<' is used to delete the last character. 
@@ -8,7 +9,14 @@ const TypingMessage = () => {
 	const typingSpeed = Math.random() * 100 + 80;
 	var index = 0;
 	useEffect(() => {
+		document.getElementById("intro")!.innerHTML = "";
+		index = 0;
 		const intervalId = setInterval(() => {
+			// check to see if component is mounted
+			if (document.getElementById("intro") == null) {
+				clearInterval(intervalId);
+			}
+
 			if (index < message.length) {
 				if (message[index] !== "<") {
 					document.getElementById("intro")!.innerHTML += message[index];
