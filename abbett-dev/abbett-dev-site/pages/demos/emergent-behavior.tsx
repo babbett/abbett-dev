@@ -17,7 +17,6 @@ type Particle = {
 // structures is a sort of path, could connect food sources? 
 var EmergentBehavior = () => {   
     useEffect (() => {
-        console.log("Hello");
         let canvas: any = document.getElementById("life");
         let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
 

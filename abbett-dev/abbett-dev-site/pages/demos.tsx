@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import EmergentBehavior from "./demos/emergent-behavior";
+import Pollination from "./demos/pollination";
 
 const Demos = () => {
-    const [currentDemo, setCurrentDemo] = useState("");
+    const [currentDemo, setCurrentDemo] = useState("Pollination");
     
     const CurrDemo = (demoName: string) => {
         switch (demoName) {
             case "Emergent Behavior":
                 return <EmergentBehavior />
+            case "Pollination":
+                return <Pollination />
             default:
                 return <div></div>
             }
@@ -19,6 +22,7 @@ const Demos = () => {
                 <h1 className="text-3xl text-center">Demos</h1>
                 <ul className="">
                     <li><a className="hover:underline hover:cursor-pointer" onClick={() => setCurrentDemo("Emergent Behavior")}>Emergent Behavior</a></li>
+                    <li><a className="hover:underline hover:cursor-pointer" onClick={() => setCurrentDemo("Pollination")}>Pollination</a></li>
                     <li><a className="hover:underline hover:cursor-pointer" onClick={() => setCurrentDemo("")}>Default</a></li>
                 </ul>
             </div>
