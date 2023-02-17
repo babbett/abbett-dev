@@ -1,6 +1,7 @@
 import { SetStateAction, useEffect, useState } from "react";
 import {writeUserData, getUserData} from "../api/db";
 import { getDatabase, ref, onValue} from "firebase/database";
+import ChatBox from "../../components/ChatBox";
 
 const Websockets = () => {
 
@@ -19,7 +20,7 @@ const Websockets = () => {
 
     return (
         <>
-            <div className="">
+            {/* <div className="">
                 <h1>Websockets</h1>
                 <div>
                     <label htmlFor="enterHere"></label>
@@ -35,6 +36,10 @@ const Websockets = () => {
             <div>
                 <h1>Messages</h1>
                 <div id='messages'></div>
+            </div> */}
+            <div>
+                <h1>NEW Messages component test</h1>
+                <ChatBox />
             </div>
         </>
     );

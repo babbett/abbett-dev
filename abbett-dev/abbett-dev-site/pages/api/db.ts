@@ -4,9 +4,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { randomUUID } from "crypto";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -24,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app);
+export const database = getDatabase(app);
 
 export function writeUserData(message: string): void {
     //const id = Math.random().toString().replace('.', '');;
@@ -52,4 +49,29 @@ export function getUserData() {
         console.error(error);
         return '';
     });
+}
+
+export interface Message {
+    message: string;
+    timestamp: number;
+    username: string;
+    messageId: string;
+}
+
+export class MessageClass implements Message {
+    message: string;
+    timestamp: number;
+    username: string;
+    messageId: string;
+
+    constructor(message: string, timestamp: number, username: string, messageId: string) {
+        this.message = message;
+        this.timestamp = timestamp;
+        this.username = username;
+        this.messageId = messageId;
+    }
+
+    logMessage() {
+        console.log("The message: " + this.message + ", was sent at " + this.timestamp + " by " + this.username + " with id " + this.messageId);
+    }
 }
