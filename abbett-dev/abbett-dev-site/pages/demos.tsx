@@ -3,7 +3,7 @@ import EmergentBehavior from "./demos/emergent-behavior";
 import Pollination from "./demos/pollination";
 
 const Demos = () => {
-    const [currentDemo, setCurrentDemo] = useState("Pollination");
+    const [currentDemo, setCurrentDemo] = useState("EmergentBehavior");
     
     const CurrDemo = (demoName: string) => {
         switch (demoName) {
