@@ -207,6 +207,8 @@ class Bee {
         this.location = null;
     }
 
+    
+
     draw(ctx: CanvasRenderingContext2D) {
         if (ctx == null) return;
         ctx.fillStyle = "black";
