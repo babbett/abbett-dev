@@ -2,7 +2,7 @@ const Footer = () => {
     return (
         <div className="md:py-2 py-5 w-full flex-none">
             <hr className="my-2 mx-auto w-11/12"/>
-            <h4 className="text-lg text-center dark:text-white">© 2022 Ben Abbett | {ExternalLinks()}</h4>
+            <h4 className="text-lg text-center dark:text-white">© 2022-2023 Ben Abbett | {ExternalLinks()}</h4>
         </div>
     );
 }
