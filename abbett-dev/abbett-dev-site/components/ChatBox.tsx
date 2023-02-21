@@ -33,11 +33,10 @@ const ChatBox = () => {
     const sendMessage = () => {
         const message: string = (document.getElementById("messageBox") as HTMLInputElement).value;
 
-        // dont send if no message
         if (message.length === 0) {
             return;
         }
-        
+
         let messageObj = new MessageClass(message, Date.now(), "test", "test" + Math.floor(Math.random() * 1000));
         //messageObj.logMessage();
 
@@ -52,18 +51,14 @@ const ChatBox = () => {
     };
 
     return (
-        <div className="chat-box">
-            <h1 className="dark:text-white">Messages</h1>
-            <div id="messages">
+        <div className="grid grid-rows-6 gap-1 chat-box h-80">
+            <h1 className="dark:text-white text-center text-3xl">Messages</h1>
+            <div className="row-span-4 overflow-y-auto px-2" id="messages">
                 {messages.map((message) => (
-                    <div key={message.messageId} className="dark:text-white dark:border-white border-2 rounded-sm">
-                        <p>{message.message}</p>
-                        <p>{"Sent on " + (new Date(message.timestamp).toLocaleString() + " by " + message.username)}</p>
-                    </div>
+                    <SingleMessage message={message} key={message.messageId} />
                 ))}
             </div>
-            <div id="addNewMessage">
-                <label htmlFor="enterHere" className="dark:text-white">New message</label>
+            <div className="" id="addNewMessage">
                 <input
                     id="messageBox"
                     title="send message"
@@ -71,11 +66,21 @@ const ChatBox = () => {
                     name="message"
                     defaultValue=""
                     className="border-4 border-blue-400"
+                    maxLength={1000}
                 />
                 <button type="button" className="border-2 rounded-md border-blue-200 dark:text-white" onClick={sendMessage}>
                     Send
                 </button>
             </div>
+        </div>
+    );
+};
+
+const SingleMessage = (props: { message: Message }) => {
+    return (
+        <div className="dark:text-white mb-2 w-fit">
+            <p className="w-fit dark:border-white border-2 rounded-lg px-2 py-1">{props.message.username + ": " + props.message.message}</p>
+            <p className="w-fit mr-2">{new Date(props.message.timestamp).toLocaleString()}</p>
         </div>
     );
 };

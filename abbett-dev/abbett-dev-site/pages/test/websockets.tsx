@@ -5,18 +5,18 @@ import ChatBox from "../../components/ChatBox";
 
 const Websockets = () => {
 
-    useEffect(() => {
-        const db = getDatabase();
-        const testRef = ref(db, 'test/' + 0 + '/message');
+    // useEffect(() => {
+    //     const db = getDatabase();
+    //     const testRef = ref(db, 'test/' + 0 + '/message');
         
-        onValue(testRef, (snapshot) => {
-            const data = snapshot.val();
-            //console.log('response: ' + data);
-            addNewMessage(data);
-            //updateStarCount(postElement, data);
-        });
+    //     onValue(testRef, (snapshot) => {
+    //         const data = snapshot.val();
+    //         //console.log('response: ' + data);
+    //         addNewMessage(data);
+    //         //updateStarCount(postElement, data);
+    //     });
         
-    }, []);
+    // }, []);
 
     return (
         <>
@@ -38,8 +38,10 @@ const Websockets = () => {
                 <div id='messages'></div>
             </div> */}
             <div>
-                <h1>NEW Messages component test</h1>
-                <ChatBox />
+                <h1 className="dark:text-white">NEW Messages component test</h1>
+                <div className="w-1/2 border-2 border-red-400">
+                    <ChatBox />
+                </div>
             </div>
         </>
     );
