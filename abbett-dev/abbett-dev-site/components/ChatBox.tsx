@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { randomUUID } from "crypto";
 
-import { Message, MessageClass, database } from "../pages/api/db";
+import { MessageClass as Message, database } from "../pages/api/db";
 
 
 
@@ -16,7 +16,7 @@ const ChatBox = () => {
         onValue(messagingRef, (snapshot) => {
             const data = snapshot.val();
 
-            const messagesResp: MessageClass[] = Object.values(data);
+            const messagesResp: Message[] = Object.values(data);
 
             messagesResp.forEach((message: Message) => {
                 console.log(message);
@@ -37,7 +37,7 @@ const ChatBox = () => {
             return;
         }
 
-        let messageObj = new MessageClass(message, Date.now(), "test", "test" + Math.floor(Math.random() * 1000));
+        let messageObj = new Message(message, Date.now(), "test", "test" + Math.floor(Math.random() * 1000));
         //messageObj.logMessage();
 
         const db = getDatabase();
@@ -51,26 +51,28 @@ const ChatBox = () => {
     };
 
     return (
-        <div className="grid grid-rows-6 gap-1 chat-box h-80">
+        <div className="grid grid-rows-6 gap-1 chat-box">
             <h1 className="dark:text-white text-center text-3xl">Messages</h1>
             <div className="row-span-4 overflow-y-auto px-2" id="messages">
                 {messages.map((message) => (
                     <SingleMessage message={message} key={message.messageId} />
                 ))}
             </div>
-            <div className="" id="addNewMessage">
-                <input
-                    id="messageBox"
-                    title="send message"
-                    type="text"
-                    name="message"
-                    defaultValue=""
-                    className="border-4 border-blue-400"
-                    maxLength={1000}
-                />
-                <button type="button" className="border-2 rounded-md border-blue-200 dark:text-white" onClick={sendMessage}>
-                    Send
-                </button>
+            <div className="row h-10" id="addNewMessage">
+                <div className="flex">
+                    <input
+                        id="messageBox"
+                        title="send message"
+                        type="text"
+                        name="message"
+                        defaultValue=""
+                        className="flex-auto border-4 border-blue-400"
+                        maxLength={1000}
+                    />
+                    <button type="button" className="flex-none border-2 rounded-md border-blue-200 dark:text-white" onClick={sendMessage}>
+                        Send
+                    </button>
+                </div>
             </div>
         </div>
     );
