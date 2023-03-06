@@ -23,11 +23,15 @@ const TypingMessage = () => {
 			if (index == message.length) {
 				document.getElementById("intro")!.className += " text-emerald-400";
 				clearInterval(intervalId);
+				return;
 			}
+
+			return () => clearInterval(intervalId);
 		}, typingSpeed);
 	}, [index, typingSpeed]);
 
 	return <h2 className="text-4xl text-center mb-2" id="intro"></h2>;
 };
+
 
 export default TypingMessage;
