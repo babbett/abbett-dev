@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-import { randomUUID } from "crypto";
+import { parse, v4 as uuidv4 } from 'uuid';
 
 import { MessageClass as Message, database, getDateForDB } from "../pages/api/db";
 
@@ -37,22 +37,18 @@ const ChatBox = () => {
     }, []);
 
     const sendMessage = () => {
-        const message: string = (document.getElementById("messageBox") as HTMLInputElement).value;
-        if (message.length === 0) {
+        const messageTxt: string = (document.getElementById("messageBox") as HTMLInputElement).value;
+        if (messageTxt.length === 0) {
             return;
         }
 
-        let messageObj = new Message({ message, username });
-
+        let message = new Message({ message: messageTxt, username });
+ 
         try {
-            messageObj.send("global");
-            
-            // clear the message box
+            message.send("global");
             (document.getElementById("messageBox") as HTMLInputElement).value = "";
         }
-        catch (e) {
-            console.log(e);
-        }
+        catch (e) { console.log(e); }
     };
 
     const addUsername = () => {
@@ -65,65 +61,97 @@ const ChatBox = () => {
     };
 
     if (username === "") {
+        const defaultUsername = `User-${uuidv4().slice(0, 7)}`;
+
         return (
-            <div className="w-fit chat-box no-username mx-auto mt-2 mb-2">
-                {/*enter a username*/}
+            <div className="w-fit chat-box no-username mx-auto border-2 border-blue-500">
                 <label htmlFor="usernameBox" className="dark:text-white text-3xl">Please enter a username: </label>
                 <div className="flex py-2 px-1">
-                        <input
-                            id="usernameBox"
-                            title="set username"
-                            type="text"
-                            name="username"
-                            defaultValue=""
-                            className="flex-auto"
-                            maxLength={20}
-                            onKeyDown = {(e) => {
-                                if (e.key === "Enter") {
-                                    addUsername();
-                                }
-                                // animate button?
-                            }}
-                        />
-                        <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={addUsername}>
-                            Set
-                        </button>
-                    </div>
+                    <input
+                        id="usernameBox"
+                        title="set username"
+                        type="text"
+                        name="username"
+                        defaultValue={defaultUsername}
+                        className="flex-auto rounded-md"
+                        maxLength={20}
+                        onKeyDown = {(e) => {
+                            if (e.key === "Enter") {
+                                addUsername();
+                            }
+                            // animate button?
+                        }}
+                    />
+                    <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={addUsername}>
+                        Set
+                    </button>
+                </div>
             </div>
         )
     } else {
         return (
-            <div className="flex-row chat-box">
-                <h1 className="flex-none dark:text-white text-center text-3xl">Messages</h1>
-                <div className="flex-auto row-span-4 overflow-y-auto px-2" id="messages">
-                    {messages.map((message) => (
-                        <SingleMessage message={message} key={message.messageId} />
-                    ))}
-                </div>
-                <div className="flex-none h-10" id="addNewMessage">
-                    <hr className="my-2"/>
-                    <div className="flex">
-                        <input
-                            id="messageBox"
-                            title="send message"
-                            type="text"
-                            name="message"
-                            defaultValue=""
-                            className="flex-auto"
-                            maxLength={1000}
-                            onKeyDown = {(e) => {
-                                if (e.key === "Enter") {
-                                    sendMessage();
-                                }
-                                // animate button?
-                            }}
-                        />
-                        <button type="button" className="flex-none border-2 rounded-md dark:text-white" onClick={sendMessage}>
-                            Send
-                        </button>
-                    </div>
+            // <div className="flex-row h-full chat-box">
+            //     <h1 className="flex-none dark:text-white text-center text-3xl">Messages</h1>
+            //     <div className="flex-auto overflow-y-auto px-2" id="messages">
+            //         {messages.map((message) => (
+            //             <SingleMessage message={message} key={message.messageId} />
+            //         ))}
+            //     </div>
+            //     <div className="flex-none h-10" id="addNewMessage">
+            //         <hr className="my-2"/>
+            //         <div className="flex px-1">
+            //             <input
+            //                 id="messageBox"
+            //                 title="send message"
+            //                 type="text"
+            //                 name="message"
+            //                 defaultValue=""
+            //                 className="flex-auto rounded-md"
+            //                 maxLength={1000}
+            //                 onKeyDown = {(e) => {
+            //                     if (e.key === "Enter") {
+            //                         sendMessage();
+            //                     }
+            //                     // animate button?
+            //                 }}
+            //             />
+            //             <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={sendMessage}>
+            //                 Send
+            //             </button>
+            //         </div>
+            //     </div>
+            // </div>
+        <div className="flex flex-col h-full chat-box">
+            <h1 className="flex-none dark:text-white text-center text-3xl">Messages</h1>
+            <div className="flex-auto max-h-full overflow-y-auto px-2" id="messages">
+                {messages.map((message) => (
+                    <SingleMessage message={message} key={message.messageId} />
+                ))}
+            </div>
+            <div className="flex-none h-10" id="addNewMessage">
+                <hr className="pt-2"/>
+                <div className="flex px-1">
+                    <input
+                        id="messageBox"
+                        title="send message"
+                        type="text"
+                        name="message"
+                        defaultValue=""
+                        className="flex-auto rounded-md"
+                        maxLength={1000}
+                        onKeyDown = {(e) => {
+                            if (e.key === "Enter") {
+                                sendMessage();
+                            }
+                            // animate button?
+                        }}
+                    />
+                    <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={sendMessage}>
+                        Send <i className="fa fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
+        </div>
         );
     }
 };
@@ -147,5 +175,15 @@ const SingleMessage = (props: { message: Message }) => {
         </div>
     );
 };
+
+const MessageList = (props: { messages: Message[] }) => {
+    return (
+        <div className="max-h-full overflow-y-auto px-2" id="messages">
+            {props.messages.map((message) => (
+                <SingleMessage message={message} key={message.messageId} />
+            ))}
+        </div>
+    );
+}
 
 export default ChatBox;
