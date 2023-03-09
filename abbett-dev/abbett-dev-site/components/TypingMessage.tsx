@@ -21,7 +21,7 @@ const TypingMessage = () => {
 
 			// When finished, add change the color to a nice green.
 			if (index == message.length) {
-				document.getElementById("intro")!.className += " text-emerald-400";
+				document.getElementById("intro")!.className += " text-emerald-500 dark:text-emerald-400";
 				clearInterval(intervalId);
 			}
 		}, typingSpeed);

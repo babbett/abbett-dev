@@ -93,18 +93,9 @@ const MainPane = (): React.ReactElement => {
           </h3>
           <p className="ml-4">
             I{"'"}m a computer science and math graduate with a passion for
-            problem-solving. I currently work as a software developer at{" "}
-            <Link href="https://www.brickriver.com">
-              <span className="hover:text-blue-500 cursor-pointer">
-                <u>Brick River Technologies</u>
-              </span>
-            </Link>
-            , a small SaaS company which mainly provides tools for non-profits.
-            In my free time, I enjoy taking care of my rabbit, playing chess,
-            and rock climbing. I{"'"}m always looking for new opportunities and
-            challenges to help me grow and develop my skills. If you have an
-            opening you think I could be a great fit for, please don{"'"}t
-            hesitate to reach out!
+            problem-solving. Currently, I{"'"}m working as a .Net software developer, but 
+            in my free time, I enjoy taking care of my rabbit, playing chess,
+            and rock climbing. Feel free to reach out <a href="#linkedin" className="text-emerald-500 dark:text-emerald-400 hover:underline">here</a>! 
           </p>
         </section>
         <section className="mt-2">
@@ -143,7 +134,7 @@ const MainPane = (): React.ReactElement => {
             </a>
           </div>
           <div className="ml-4">
-            <span className="font-bold">LinkedIn:</span>{" "}
+            <span id="linkedin" className="font-bold">LinkedIn:</span>{" "}
             <a
               className="hover:text-blue-500"
               href="https://www.linkedin.com/in/abbett/"
