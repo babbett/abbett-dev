@@ -85,14 +85,13 @@ const Logo = (): React.ReactElement => {
     return (
         <Link id='lnkLogo' href='/'>
             <a className="text-4xl 
-                        font-extrabold 
                         text-transparent 
                         whitespace-nowrap
                         cursor-pointer
                         select-none
                         drop-shadow
                         bg-clip-text bg-gradient-to-tr from-yellow-300 to-emerald-400 via-violet-600">
-                {'{ BA }'}
+                {'{ }'}
             </a>
         </Link>
     );

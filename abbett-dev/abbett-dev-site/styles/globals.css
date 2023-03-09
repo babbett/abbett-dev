@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Rubik', sans-serif;
+    /*font-family: 'Rubik', sans-serif;*/
+    font-family: 'Segoe UI', sans-serif;
 }
 
 /* fonts.google.com variable font styling */

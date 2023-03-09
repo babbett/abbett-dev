@@ -64,7 +64,7 @@ const ChatBox = () => {
         const defaultUsername = `User-${uuidv4().slice(0, 7)}`;
 
         return (
-            <div className="w-fit chat-box no-username mx-auto border-2 border-blue-500">
+            <div className="w-fit chat-box no-username mx-auto">
                 <label htmlFor="usernameBox" className="dark:text-white text-3xl">Please enter a username: </label>
                 <div className="flex py-2 px-1">
                     <input

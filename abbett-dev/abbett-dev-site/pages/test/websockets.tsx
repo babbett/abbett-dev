@@ -7,7 +7,7 @@ const Websockets = () => {
     return (
         <div>
             <h1 className="dark:text-white">NEW Messages component test</h1>
-            <div className="w-1/2 h-96 border-2 border-red-400">
+            <div className="w-1/2 h-96">
                 <ChatBox />
             </div>
         </div>
