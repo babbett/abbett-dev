@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
+import { database, getDateForDB } from "../pages/api/db";
 import { parse, v4 as uuidv4 } from 'uuid';
 
-import { MessageClass as Message, database, getDateForDB } from "../pages/api/db";
-
+// Components
+import FontAwesomePicker from "./FontAwesomePicker";
+// Classes
+import { Message } from "../lib/Message";
 
 
 const ChatBox = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [username, setUsername] = useState<string>("");
+    const [loggedIn, setLoggedIn] = useState<boolean>(false);
     var lastMessageId = messages[messages.length - 1]?.messageId;
 
     useEffect(() => {
@@ -37,6 +41,17 @@ const ChatBox = () => {
         });
     }, []);
 
+    // focus on the div with the id of the last message
+    useEffect(() => {
+        console.log(lastMessageId)
+        if (lastMessageId !== undefined && username.length > 0) {
+            var lastMessage = document.getElementById(lastMessageId);
+            if (lastMessage !== null) {
+                lastMessage.scrollIntoView();
+            }
+        }
+    }, [lastMessageId, username]);
+
     const sendMessage = () => {
         const messageTxt: string = (document.getElementById("messageBox") as HTMLInputElement).value;
         if (messageTxt.length === 0) {
@@ -55,11 +70,18 @@ const ChatBox = () => {
 
     const addUsername = () => {
         const username: string = (document.getElementById("usernameBox") as HTMLInputElement).value;
+        const icon: string = (document.getElementById("iconBox") as HTMLInputElement).value;
+
         if (username.length === 0) {
             return;
         }
 
-        setUsername(() => username);
+        if (icon.length === 0) {
+            setUsername(() => `fas fa-ambulance ${username}`);
+        } else {
+            setUsername(() => `${icon} ${username}`);
+        }
+        setLoggedIn(() => true);
         scrollToLastMessage();
     };
 
@@ -70,20 +92,11 @@ const ChatBox = () => {
         }
     };
 
-    // get the id of the last message
+    const onNewIcon = (icon: string) => {
+        setUsername((value) => `${icon} ${value}`);
+    };
 
-    // focus on the div with the id of the last message
-    useEffect(() => {
-        console.log(lastMessageId)
-        if (lastMessageId !== undefined && username.length > 0) {
-            var lastMessage = document.getElementById(lastMessageId);
-            if (lastMessage !== null) {
-                lastMessage.scrollIntoView();
-            }
-        }
-    }, [lastMessageId, username]);
-
-    if (username === "") {
+    if (!loggedIn) {
         const defaultUsername = `User-${uuidv4().slice(0, 7)}`;
 
         return (
@@ -109,6 +122,7 @@ const ChatBox = () => {
                         Set
                     </button>
                 </div>
+                <FontAwesomePicker onSelect={onNewIcon}></FontAwesomePicker>
             </div>
         )
     } else {
@@ -149,7 +163,19 @@ const ChatBox = () => {
 
 const SingleMessage = (props: { message: Message }) => {
     const UserName = (props: { className: string, children: Message }) => {
-        return <span className={props.className}>{props.children.username}</span>;
+        if (props.children.username === "" || !props.children.username.startsWith('fas')) {
+            return (
+                <p className={props.className}>
+                    {props.children.username}
+                </p>
+            );
+        } else {
+            return (
+                <p className={props.className}>
+                    <i className={"fas " + props.children.username.split(" ")[1]}></i> {props.children.username.split(" ").slice(2).join(" ")}
+                </p>
+            );
+        }
     };
 
     return (
@@ -176,5 +202,9 @@ const MessageList = (props: { messages: Message[] }) => {
         </div>
     );
 }
+
+const ParseUsername = (props: { username: string }) => {
+
+};
 
 export default ChatBox;
