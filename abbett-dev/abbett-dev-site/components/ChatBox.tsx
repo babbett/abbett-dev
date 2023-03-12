@@ -9,6 +9,7 @@ import { MessageClass as Message, database, getDateForDB } from "../pages/api/db
 const ChatBox = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [username, setUsername] = useState<string>("");
+    var lastMessageId = messages[messages.length - 1]?.messageId;
 
     useEffect(() => {
         // get current day for folder structure
@@ -43,7 +44,8 @@ const ChatBox = () => {
         }
 
         let message = new Message({ message: messageTxt, username });
- 
+        lastMessageId = message.messageId;
+
         try {
             message.send("global");
             (document.getElementById("messageBox") as HTMLInputElement).value = "";
@@ -58,7 +60,28 @@ const ChatBox = () => {
         }
 
         setUsername(() => username);
+        scrollToLastMessage();
     };
+
+    const scrollToLastMessage = () => {
+        var lastMessage = document.getElementById(lastMessageId);
+        if (lastMessage !== null) {
+            lastMessage.scrollIntoView();
+        }
+    };
+
+    // get the id of the last message
+
+    // focus on the div with the id of the last message
+    useEffect(() => {
+        console.log(lastMessageId)
+        if (lastMessageId !== undefined && username.length > 0) {
+            var lastMessage = document.getElementById(lastMessageId);
+            if (lastMessage !== null) {
+                lastMessage.scrollIntoView();
+            }
+        }
+    }, [lastMessageId, username]);
 
     if (username === "") {
         const defaultUsername = `User-${uuidv4().slice(0, 7)}`;
@@ -90,37 +113,6 @@ const ChatBox = () => {
         )
     } else {
         return (
-            // <div className="flex-row h-full chat-box">
-            //     <h1 className="flex-none dark:text-white text-center text-3xl">Messages</h1>
-            //     <div className="flex-auto overflow-y-auto px-2" id="messages">
-            //         {messages.map((message) => (
-            //             <SingleMessage message={message} key={message.messageId} />
-            //         ))}
-            //     </div>
-            //     <div className="flex-none h-10" id="addNewMessage">
-            //         <hr className="my-2"/>
-            //         <div className="flex px-1">
-            //             <input
-            //                 id="messageBox"
-            //                 title="send message"
-            //                 type="text"
-            //                 name="message"
-            //                 defaultValue=""
-            //                 className="flex-auto rounded-md"
-            //                 maxLength={1000}
-            //                 onKeyDown = {(e) => {
-            //                     if (e.key === "Enter") {
-            //                         sendMessage();
-            //                     }
-            //                     // animate button?
-            //                 }}
-            //             />
-            //             <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={sendMessage}>
-            //                 Send
-            //             </button>
-            //         </div>
-            //     </div>
-            // </div>
         <div className="flex flex-col h-full chat-box">
             <h1 className="flex-none dark:text-white text-center text-3xl">Messages</h1>
             <div className="flex-auto max-h-full overflow-y-auto px-2" id="messages">
@@ -129,8 +121,7 @@ const ChatBox = () => {
                 ))}
             </div>
             <div className="flex-none h-10" id="addNewMessage">
-                <hr className="pt-2"/>
-                <div className="flex px-1">
+                <div className="flex rounded-xl border-2 bg-white dark:border-white p-2">
                     <input
                         id="messageBox"
                         title="send message"
@@ -146,7 +137,7 @@ const ChatBox = () => {
                             // animate button?
                         }}
                     />
-                    <button type="button" className="flex-none ml-2 px-2 border-2 rounded-md dark:text-white" onClick={sendMessage}>
+                    <button type="button" className="flex-none ml-1 rounded-md hover:text-sky-500" onClick={sendMessage}>
                         Send <i className="fa fa-paper-plane"></i>
                     </button>
                 </div>
@@ -162,7 +153,7 @@ const SingleMessage = (props: { message: Message }) => {
     };
 
     return (
-        <div className="dark:text-white mb-2 w-fit">
+        <div id={props.message.messageId} className="dark:text-white mb-2 w-fit">
             <div className="flex">
                 <UserName className="flex-none px-2 py-1 border-2 rounded-l-lg dark:border-sky-300">
                     {props.message}
